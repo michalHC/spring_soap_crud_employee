@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="d7a2eb76-80a3-48b3-9ef8-de6176ae4c14" activeEnvironment="Default" name="test1" resourceRoot="" soapui-version="5.7.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="a0a1bce6-1137-411b-b33f-144a1057eaf1" wsaVersion="NONE" name="EmployeesPortSoap11" type="wsdl" bindingName="{http://www.example.org/employee-ws}EmployeesPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/soapws/employees.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/soapws/employees.wsdl"><con:part><con:url>http://localhost:8080/soapws/employees.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.example.org/employee-ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.example.org/employee-ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/employee-ws">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.example.org/employee-ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getEmployeeByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="employeeId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEmployeeByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="employeeInfo" type="tns:employeeInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="employeeInfo">
+        <xs:sequence>
+          <xs:element name="employeeId" type="xs:long"/>
+          <xs:element name="firstname" type="xs:string"/>
+          <xs:element name="lastname" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+          <xs:element name="jobId" type="xs:string"/>
+          <xs:element name="departmentId" type="xs:string"/>
+          <xs:element name="salary" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllEmployeesRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllEmployeesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="employeeInfo" type="tns:employeeInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element name="statusCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="addEmployeeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="firstname" type="xs:string"/>
+            <xs:element name="lastname" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="jobId" type="xs:string"/>
+            <xs:element name="departmentId" type="xs:integer"/>
+            <xs:element name="salary" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addEmployeeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="employeeInfo" type="tns:employeeInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateEmployeeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="employeeInfo" type="tns:employeeInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateEmployeeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteEmployeeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="employeeId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteEmployeeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addEmployeeResponse">
+    <wsdl:part element="tns:addEmployeeResponse" name="addEmployeeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateEmployeeRequest">
+    <wsdl:part element="tns:updateEmployeeRequest" name="updateEmployeeRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateEmployeeResponse">
+    <wsdl:part element="tns:updateEmployeeResponse" name="updateEmployeeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmployeeByIdRequest">
+    <wsdl:part element="tns:getEmployeeByIdRequest" name="getEmployeeByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteEmployeeRequest">
+    <wsdl:part element="tns:deleteEmployeeRequest" name="deleteEmployeeRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllEmployeesRequest">
+    <wsdl:part element="tns:getAllEmployeesRequest" name="getAllEmployeesRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllEmployeesResponse">
+    <wsdl:part element="tns:getAllEmployeesResponse" name="getAllEmployeesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteEmployeeResponse">
+    <wsdl:part element="tns:deleteEmployeeResponse" name="deleteEmployeeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmployeeByIdResponse">
+    <wsdl:part element="tns:getEmployeeByIdResponse" name="getEmployeeByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEmployeeRequest">
+    <wsdl:part element="tns:addEmployeeRequest" name="addEmployeeRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EmployeesPort">
+    <wsdl:operation name="addEmployee">
+      <wsdl:input message="tns:addEmployeeRequest" name="addEmployeeRequest"></wsdl:input>
+      <wsdl:output message="tns:addEmployeeResponse" name="addEmployeeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmployee">
+      <wsdl:input message="tns:updateEmployeeRequest" name="updateEmployeeRequest"></wsdl:input>
+      <wsdl:output message="tns:updateEmployeeResponse" name="updateEmployeeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeById">
+      <wsdl:input message="tns:getEmployeeByIdRequest" name="getEmployeeByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getEmployeeByIdResponse" name="getEmployeeByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmployee">
+      <wsdl:input message="tns:deleteEmployeeRequest" name="deleteEmployeeRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteEmployeeResponse" name="deleteEmployeeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmployees">
+      <wsdl:input message="tns:getAllEmployeesRequest" name="getAllEmployeesRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllEmployeesResponse" name="getAllEmployeesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmployeesPortSoap11" type="tns:EmployeesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addEmployee">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addEmployeeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmployee">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateEmployeeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getEmployeeByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEmployeeByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteEmployee">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteEmployeeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllEmployees">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllEmployeesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllEmployeesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmployeesPortService">
+    <wsdl:port binding="tns:EmployeesPortSoap11" name="EmployeesPortSoap11">
+      <soap:address location="http://localhost:8080/soapws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/soapws</con:endpoint></con:endpoints><con:operation id="7f58c795-4e8b-4cc8-a900-9fdfe9f7e50c" isOneWay="false" action="" name="addEmployee" bindingOperationName="addEmployee" type="Request-Response" outputName="addEmployeeResponse" inputName="addEmployeeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d4d55bbe-a4cb-4ab8-955c-5ead90f2040d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.example.org/employee-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:addEmployeeRequest>\r
+         <emp:firstname>?</emp:firstname>\r
+         <emp:lastname>?</emp:lastname>\r
+         <emp:email>?</emp:email>\r
+         <emp:jobId>?</emp:jobId>\r
+         <emp:departmentId>?</emp:departmentId>\r
+         <emp:salary>?</emp:salary>\r
+      </emp:addEmployeeRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/employee-ws/EmployeesPort/addEmployeeRequest"/></con:call></con:operation><con:operation id="714ec2f7-f510-4b85-8182-ebb9b54816d1" isOneWay="false" action="" name="deleteEmployee" bindingOperationName="deleteEmployee" type="Request-Response" outputName="deleteEmployeeResponse" inputName="deleteEmployeeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="88bd3e9b-3a7c-44d5-a98c-61519fce0d2b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.example.org/employee-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:deleteEmployeeRequest>\r
+         <emp:employeeId>?</emp:employeeId>\r
+      </emp:deleteEmployeeRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/employee-ws/EmployeesPort/deleteEmployeeRequest"/></con:call></con:operation><con:operation id="4f407ec0-cfe5-46a6-8189-6df863eac607" isOneWay="false" action="" name="getAllEmployees" bindingOperationName="getAllEmployees" type="Request-Response" outputName="getAllEmployeesResponse" inputName="getAllEmployeesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b441df13-7009-41a0-89bd-bafb8def78f1" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.example.org/employee-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:getAllEmployeesRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/employee-ws/EmployeesPort/getAllEmployeesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="4bdbf60e-e6d4-4785-9a91-739b2371568e" isOneWay="false" action="" name="getEmployeeById" bindingOperationName="getEmployeeById" type="Request-Response" outputName="getEmployeeByIdResponse" inputName="getEmployeeByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cd44d275-4a6b-4027-ad7c-2b4583b67bdf" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.example.org/employee-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:getEmployeeByIdRequest>\r
+         <emp:employeeId>?</emp:employeeId>\r
+      </emp:getEmployeeByIdRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/employee-ws/EmployeesPort/getEmployeeByIdRequest"/></con:call></con:operation><con:operation id="bc3d7e50-8b2d-46a9-a019-d16f120f5d3c" isOneWay="false" action="" name="updateEmployee" bindingOperationName="updateEmployee" type="Request-Response" outputName="updateEmployeeResponse" inputName="updateEmployeeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7240badf-60db-4888-807b-1cc6be99c1e7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soapws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.example.org/employee-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <emp:updateEmployeeRequest>\r
+         <emp:employeeInfo>\r
+            <emp:employeeId>?</emp:employeeId>\r
+            <emp:firstname>?</emp:firstname>\r
+            <emp:lastname>?</emp:lastname>\r
+            <emp:email>?</emp:email>\r
+            <emp:jobId>?</emp:jobId>\r
+            <emp:departmentId>?</emp:departmentId>\r
+            <emp:salary>?</emp:salary>\r
+         </emp:employeeInfo>\r
+      </emp:updateEmployeeRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/employee-ws/EmployeesPort/updateEmployeeRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

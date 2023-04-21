@@ -1,41 +1,48 @@
 package org.example.entity;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import org.springframework.data.annotation.Id;
+import com.google.cloud.spring.data.datastore.core.mapping.Entity;
 
-@Entity
-@Table(name="employees")
-public class Employee implements Serializable {
-    private static final long serialVersionUID = 1L;
+@Entity(name="employees")
+public class Employee{
+    //private static final Long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="employee_id")
-    private long employeeId;
+    private Long employeeId;
 
-    @Column(name="first_name")
     private String firstname;
-
-    @Column(name="last_name")
+    
     private String lastname;
 
-    @Column(name="email_address")
     private String email;
-    @Column(name="job_id")
+    
     private String jobId;
-    @Column(name="department_id")
+
     private String departmentId;
-    @Column(name="salary")
+
     private String salary;
 
+    public Employee(){
+        this.firstname = "Sample";
+        this.lastname = "Employee";
+    };
+    public Employee(String firstname, String lastname, String email, String jobId, String departmentId, String salary) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.jobId = jobId;
+        this.departmentId = departmentId;
+        this.salary = salary;
+      }
+
     public long getEmployeeId() {
-        return employeeId;
+        return this.employeeId;
     }
 
     public void setEmployeeId(long employeeId){
         this.employeeId = employeeId;
     }
     public String getFirstname(){
-        return firstname;
+        return this.firstname;
     }
 
     public void setFirstname(String firstname) {
@@ -43,29 +50,29 @@ public class Employee implements Serializable {
     }
 
     public String getLastname(){
-        return lastname;
+        return this.lastname;
     }
     public void setLastname(String lastname){
         this.lastname = lastname;
     }
 
     public String getEmail(){
-        return email;
+        return this.email;
     }
     public void setEmail(String email){
         this.email = email;
     }
 
     public String getDepartmentId() {
-        return departmentId;
+        return this.departmentId;
     }
 
     public String getJobId() {
-        return jobId;
+        return this.jobId;
     }
 
     public String getSalary() {
-        return salary;
+        return this.salary;
     }
 
     public void setDepartmentId(String departmentId) {

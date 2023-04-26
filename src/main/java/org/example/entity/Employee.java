@@ -9,8 +9,9 @@ import java.io.Serializable;
 public class Employee implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="employee_id")
     private long employeeId;
 

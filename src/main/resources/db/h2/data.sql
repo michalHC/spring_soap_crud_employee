@@ -1,0 +1,2 @@
+INSERT INTO employees (employee_id, first_name, last_name, salary) VALUES (default, 'Tom', 'The Cat', 500);
+INSERT INTO employees (employee_id, first_name, last_name, salary) VALUES (default, 'Jerry', 'The Mouse', 350);

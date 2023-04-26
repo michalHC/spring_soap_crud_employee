@@ -15,8 +15,7 @@ public class EmployeeService implements IEmployeeService{
 
     @Override
     public Employee getEmployeeById(long employeeId){
-        Employee obj = employeeRepository.findByEmployeeId(employeeId);
-        return obj;
+        return employeeRepository.findByEmployeeId(employeeId);
     }
     @Override
     public List<Employee> getAllEmployees(){
@@ -31,7 +30,7 @@ public class EmployeeService implements IEmployeeService{
         if(list.size() > 0){
             return false;
         } else {
-            employee = employeeRepository.save(employee);
+            employeeRepository.save(employee);
             return true;
         }
     }

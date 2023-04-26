@@ -1,26 +1,18 @@
 package org.example.endpoints;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.example.crud_ws.*;
+
+import org.example.entity.Employee;
+import org.example.service.IEmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import org.example.entity.Employee;
-import org.example.crud_ws.AddEmployeeRequest;
-import org.example.crud_ws.AddEmployeeResponse;
-import org.example.crud_ws.EmployeeInfo;
-import org.example.crud_ws.DeleteEmployeeRequest;
-import org.example.crud_ws.DeleteEmployeeResponse;
-import org.example.crud_ws.GetAllEmployeesResponse;
-import org.example.crud_ws.GetEmployeeByIdRequest;
-import org.example.crud_ws.GetEmployeeByIdResponse;
-import org.example.crud_ws.ServiceStatus;
-import org.example.crud_ws.UpdateEmployeeRequest;
-import org.example.crud_ws.UpdateEmployeeResponse;
-import org.example.service.IEmployeeService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Endpoint
@@ -44,9 +36,9 @@ public class EmployeeEndpoint {
         GetAllEmployeesResponse response = new GetAllEmployeesResponse();
         List<EmployeeInfo> employeeInfoList = new ArrayList<>();
         List<Employee> employeeList = employeeService.getAllEmployees();
-        for (int i = 0; i < employeeList.size(); i++) {
+        for (Employee employee : employeeList) {
             EmployeeInfo ob = new EmployeeInfo();
-            BeanUtils.copyProperties(employeeList.get(i), ob);
+            BeanUtils.copyProperties(employee, ob);
             employeeInfoList.add(ob);
         }
         response.getEmployeeInfo().addAll(employeeInfoList);
@@ -62,7 +54,7 @@ public class EmployeeEndpoint {
         employee.setLastname(request.getLastname());
         employee.setEmail(request.getEmail());
         boolean flag = employeeService.addEmployee(employee);
-        if (flag == false) {
+        if (!flag) {
             serviceStatus.setStatusCode("CONFLICT");
             serviceStatus.setMessage("Employee Already Available");
             response.setServiceStatus(serviceStatus);
